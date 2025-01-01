@@ -179,7 +179,8 @@ const ProductTable = () => {
                       onClick={() => setEditingProduct(product)}
                       className="cursor-pointer disabled:cursor-not-allowed"
                       style={{
-                        color: isAdmin ? "#166534" : "#737373",
+                        color:
+                          !isAdmin || product.disabled ? "#737373" : "#166534",
                       }}
                     >
                       <EditIcon />
@@ -190,15 +191,14 @@ const ProductTable = () => {
                       onClick={() => dispatch(toggleProductStatus(product.id!))}
                       className="cursor-pointer disabled:cursor-not-allowed"
                     >
-                      {product.disabled ? (
-                        <VisibilityOffIcon />
-                      ) : (
-                        <VisibilityIcon
-                          style={{
-                            color: isAdmin ? "#c084fc" : "#737373",
-                          }}
-                        />
-                      )}
+                      <VisibilityIcon
+                        style={{
+                          color:
+                            !isAdmin || product.disabled
+                              ? "#737373"
+                              : "#c084fc",
+                        }}
+                      />
                     </IconButton>
                     <IconButton
                       size="small"
