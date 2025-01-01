@@ -38,7 +38,7 @@ const ProductTable = () => {
 
   const Label = ({ name }: Props) => {
     return (
-      <span className="bg-[#000] rounded-xl bg-opacity-70 px-4 py-2 h-6">
+      <span className="bg-[#000] rounded-xl bg-opacity-70 px-4 py-2 h-6 text-[#96a650]">
         {name}
       </span>
     );
@@ -61,26 +61,55 @@ const ProductTable = () => {
 
   return (
     <>
-      <TableContainer className="bg-[#212124] rounded-[12px]">
+      <TableContainer
+        className="rounded-[12px]"
+        style={{
+          background: "#212124",
+        }}
+      >
         <Table>
           <TableHead className="text-[#f2f2f9] border-b-[#000]">
             <TableRow>
-              <TableCell className="text-[#96a650] border-b-[#000] ">
+              <TableCell
+                style={{
+                  borderBottom: "1px solid #000",
+                }}
+              >
                 <Label name={"Name"} />
               </TableCell>
-              <TableCell className="text-[#96a650] border-b-[#000]">
+              <TableCell
+                style={{
+                  borderBottom: "1px solid #000",
+                }}
+              >
                 <Label name={"Category"} />
               </TableCell>
-              <TableCell className="text-[#96a650] border-b-[#000]">
+              <TableCell
+                style={{
+                  borderBottom: "1px solid #000",
+                }}
+              >
                 <Label name={"Value"} />
               </TableCell>
-              <TableCell className="text-[#96a650] border-b-[#000]">
+              <TableCell
+                style={{
+                  borderBottom: "1px solid #000",
+                }}
+              >
                 <Label name={"Quantity"} />
               </TableCell>
-              <TableCell className="text-[#96a650] border-b-[#000]">
+              <TableCell
+                style={{
+                  borderBottom: "1px solid #000",
+                }}
+              >
                 <Label name={"Price"} />
               </TableCell>
-              <TableCell className="text-[#96a650] border-b-[#000]">
+              <TableCell
+                style={{
+                  borderBottom: "1px solid #000",
+                }}
+              >
                 <Label name={"Actions"} />
               </TableCell>
             </TableRow>
@@ -98,27 +127,57 @@ const ProductTable = () => {
             ) : (
               products.map((product) => (
                 <TableRow key={product.id}>
-                  <TableCell className="text-[#f2f2f9] border-b-[#000]">
+                  <TableCell
+                    style={{
+                      borderBottom: "1px solid #000",
+                      color: "#f2f2f9",
+                    }}
+                  >
                     {product.name}
                   </TableCell>
-                  <TableCell className="text-[#f2f2f9] border-b-[#000]">
+                  <TableCell
+                    style={{
+                      borderBottom: "1px solid #000",
+                      color: "#f2f2f9",
+                    }}
+                  >
                     {product.category}
                   </TableCell>
-                  <TableCell className="text-[#f2f2f9] border-b-[#000]">
+                  <TableCell
+                    style={{
+                      borderBottom: "1px solid #000",
+                      color: "#f2f2f9",
+                    }}
+                  >
                     {product.value}
                   </TableCell>
-                  <TableCell className="text-[#f2f2f9] border-b-[#000]">
+                  <TableCell
+                    style={{
+                      borderBottom: "1px solid #000",
+                      color: "#f2f2f9",
+                    }}
+                  >
                     {product.quantity}
                   </TableCell>
-                  <TableCell className="text-[#f2f2f9] border-b-[#000]">
+                  <TableCell
+                    style={{
+                      borderBottom: "1px solid #000",
+                      color: "#f2f2f9",
+                    }}
+                  >
                     {product.price}
                   </TableCell>
-                  <TableCell className="text-[#f2f2f9] border-b-[#000]">
+                  <TableCell
+                    style={{
+                      borderBottom: "1px solid #000",
+                      color: "#f2f2f9",
+                    }}
+                  >
                     <IconButton
                       size="small"
                       disabled={!isAdmin || product.disabled}
                       onClick={() => setEditingProduct(product)}
-                      className="text-green-800 disabled:text-neutral-500 cursor-pointer disabled:cursor-not-allowed"
+                      className="text-[#166534] disabled:text-[#737373] cursor-pointer disabled:cursor-not-allowed"
                     >
                       <EditIcon />
                     </IconButton>
@@ -126,7 +185,7 @@ const ProductTable = () => {
                       size="small"
                       disabled={!isAdmin}
                       onClick={() => dispatch(toggleProductStatus(product.id!))}
-                      className="text-purple-400 disabled:text-neutral-500 cursor-pointer disabled:cursor-not-allowed"
+                      className="text-[#c084fc] disabled:text-[#737373] cursor-pointer disabled:cursor-not-allowed"
                     >
                       {product.disabled ? (
                         <VisibilityOffIcon />
@@ -138,7 +197,7 @@ const ProductTable = () => {
                       size="small"
                       disabled={!isAdmin}
                       onClick={() => dispatch(deleteProduct(product.id!))}
-                      className="text-red-800 disabled:text-neutral-500 cursor-pointer disabled:cursor-not-allowed"
+                      className="text-[#991b1b] disabled:text-[#737373] cursor-pointer disabled:cursor-not-allowed"
                     >
                       <DeleteIcon />
                     </IconButton>
