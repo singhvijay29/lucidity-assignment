@@ -10,6 +10,7 @@ import {
   TextField,
   Stack,
 } from "@mui/material";
+import { Product } from "../../types/index";
 
 interface EditProductModalProps {
   product: Product;

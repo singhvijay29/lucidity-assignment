@@ -12,7 +12,6 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Paper,
   IconButton,
 } from "@mui/material";
 import {
@@ -24,6 +23,7 @@ import {
 import EditProductModal from "./EditProductModal";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { Product } from "../../types/index";
 
 const ProductTable = () => {
   const dispatch = useDispatch();
