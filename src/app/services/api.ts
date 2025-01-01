@@ -1,5 +1,3 @@
-const BASE_URL = "https://dev-0tf0hinghgjl39z.api.raw-labs.com";
-
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const fetchWithRetry = async (
