@@ -1,15 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { updateProduct } from "../../redux/slices/inventorySlice";
-import {
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  Button,
-  TextField,
-  Stack,
-} from "@mui/material";
 import { Product } from "../../types/index";
 
 interface EditProductModalProps {
