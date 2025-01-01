@@ -191,14 +191,22 @@ const ProductTable = () => {
                       onClick={() => dispatch(toggleProductStatus(product.id!))}
                       className="cursor-pointer disabled:cursor-not-allowed"
                     >
-                      <VisibilityIcon
-                        style={{
-                          color:
-                            !isAdmin || product.disabled
-                              ? "#737373"
-                              : "#c084fc",
-                        }}
-                      />
+                      {product.disabled ? (
+                        <VisibilityOffIcon
+                          style={{
+                            color: "#737373",
+                          }}
+                        />
+                      ) : (
+                        <VisibilityIcon
+                          style={{
+                            color:
+                              !isAdmin || product.disabled
+                                ? "#737373"
+                                : "#c084fc",
+                          }}
+                        />
+                      )}
                     </IconButton>
                     <IconButton
                       size="small"
