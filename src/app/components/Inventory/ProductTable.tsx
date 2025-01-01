@@ -65,6 +65,7 @@ const ProductTable = () => {
         className="rounded-[12px]"
         style={{
           background: "#212124",
+          position: "relative",
         }}
       >
         <Table>
@@ -125,104 +126,120 @@ const ProductTable = () => {
                 <Loader />
               </TableRow>
             ) : (
-              products.map((product) => (
-                <TableRow key={product.id}>
-                  <TableCell
-                    style={{
-                      borderBottom: "1px solid #000",
-                      color: "#f2f2f9",
-                    }}
-                  >
-                    {product.name}
-                  </TableCell>
-                  <TableCell
-                    style={{
-                      borderBottom: "1px solid #000",
-                      color: "#f2f2f9",
-                    }}
-                  >
-                    {product.category}
-                  </TableCell>
-                  <TableCell
-                    style={{
-                      borderBottom: "1px solid #000",
-                      color: "#f2f2f9",
-                    }}
-                  >
-                    {product.value}
-                  </TableCell>
-                  <TableCell
-                    style={{
-                      borderBottom: "1px solid #000",
-                      color: "#f2f2f9",
-                    }}
-                  >
-                    {product.quantity}
-                  </TableCell>
-                  <TableCell
-                    style={{
-                      borderBottom: "1px solid #000",
-                      color: "#f2f2f9",
-                    }}
-                  >
-                    {product.price}
-                  </TableCell>
-                  <TableCell
-                    style={{
-                      borderBottom: "1px solid #000",
-                      color: "#f2f2f9",
-                    }}
-                  >
-                    <IconButton
-                      size="small"
-                      disabled={!isAdmin || product.disabled}
-                      onClick={() => setEditingProduct(product)}
-                      className="cursor-pointer disabled:cursor-not-allowed"
-                      style={{
-                        color:
-                          !isAdmin || product.disabled ? "#737373" : "#166534",
-                      }}
-                    >
-                      <EditIcon />
-                    </IconButton>
-                    <IconButton
-                      size="small"
-                      disabled={!isAdmin}
-                      onClick={() => dispatch(toggleProductStatus(product.id!))}
-                      className="cursor-pointer disabled:cursor-not-allowed"
-                    >
-                      {product.disabled ? (
-                        <VisibilityOffIcon
+              <>
+                {products?.length === 0 ? (
+                  <div className="h-[200px]">
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2">
+                      No product found
+                    </div>
+                  </div>
+                ) : (
+                  <>
+                    {products.map((product) => (
+                      <TableRow key={product.id}>
+                        <TableCell
                           style={{
-                            color: "#737373",
+                            borderBottom: "1px solid #000",
+                            color: "#f2f2f9",
                           }}
-                        />
-                      ) : (
-                        <VisibilityIcon
+                        >
+                          {product.name}
+                        </TableCell>
+                        <TableCell
                           style={{
-                            color:
-                              !isAdmin || product.disabled
-                                ? "#737373"
-                                : "#c084fc",
+                            borderBottom: "1px solid #000",
+                            color: "#f2f2f9",
                           }}
-                        />
-                      )}
-                    </IconButton>
-                    <IconButton
-                      size="small"
-                      disabled={!isAdmin}
-                      onClick={() => dispatch(deleteProduct(product.id!))}
-                      className="cursor-pointer disabled:cursor-not-allowed"
-                    >
-                      <DeleteIcon
-                        style={{
-                          color: isAdmin ? "#991b1b" : "#737373",
-                        }}
-                      />
-                    </IconButton>
-                  </TableCell>
-                </TableRow>
-              ))
+                        >
+                          {product.category}
+                        </TableCell>
+                        <TableCell
+                          style={{
+                            borderBottom: "1px solid #000",
+                            color: "#f2f2f9",
+                          }}
+                        >
+                          {product.value}
+                        </TableCell>
+                        <TableCell
+                          style={{
+                            borderBottom: "1px solid #000",
+                            color: "#f2f2f9",
+                          }}
+                        >
+                          {product.quantity}
+                        </TableCell>
+                        <TableCell
+                          style={{
+                            borderBottom: "1px solid #000",
+                            color: "#f2f2f9",
+                          }}
+                        >
+                          {product.price}
+                        </TableCell>
+                        <TableCell
+                          style={{
+                            borderBottom: "1px solid #000",
+                            color: "#f2f2f9",
+                          }}
+                        >
+                          <IconButton
+                            size="small"
+                            disabled={!isAdmin || product.disabled}
+                            onClick={() => setEditingProduct(product)}
+                            className="cursor-pointer disabled:cursor-not-allowed"
+                            style={{
+                              color:
+                                !isAdmin || product.disabled
+                                  ? "#737373"
+                                  : "#166534",
+                            }}
+                          >
+                            <EditIcon />
+                          </IconButton>
+                          <IconButton
+                            size="small"
+                            disabled={!isAdmin}
+                            onClick={() =>
+                              dispatch(toggleProductStatus(product.id!))
+                            }
+                            className="cursor-pointer disabled:cursor-not-allowed"
+                          >
+                            {product.disabled ? (
+                              <VisibilityOffIcon
+                                style={{
+                                  color: "#737373",
+                                }}
+                              />
+                            ) : (
+                              <VisibilityIcon
+                                style={{
+                                  color:
+                                    !isAdmin || product.disabled
+                                      ? "#737373"
+                                      : "#c084fc",
+                                }}
+                              />
+                            )}
+                          </IconButton>
+                          <IconButton
+                            size="small"
+                            disabled={!isAdmin}
+                            onClick={() => dispatch(deleteProduct(product.id!))}
+                            className="cursor-pointer disabled:cursor-not-allowed"
+                          >
+                            <DeleteIcon
+                              style={{
+                                color: isAdmin ? "#991b1b" : "#737373",
+                              }}
+                            />
+                          </IconButton>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </>
+                )}
+              </>
             )}
           </TableBody>
         </Table>
