@@ -177,7 +177,10 @@ const ProductTable = () => {
                       size="small"
                       disabled={!isAdmin || product.disabled}
                       onClick={() => setEditingProduct(product)}
-                      className="text-[#166534] disabled:text-[#737373] cursor-pointer disabled:cursor-not-allowed"
+                      className="cursor-pointer disabled:cursor-not-allowed"
+                      style={{
+                        color: isAdmin ? "#166534" : "#737373",
+                      }}
                     >
                       <EditIcon />
                     </IconButton>
@@ -185,21 +188,29 @@ const ProductTable = () => {
                       size="small"
                       disabled={!isAdmin}
                       onClick={() => dispatch(toggleProductStatus(product.id!))}
-                      className="text-[#c084fc] disabled:text-[#737373] cursor-pointer disabled:cursor-not-allowed"
+                      className="cursor-pointer disabled:cursor-not-allowed"
                     >
                       {product.disabled ? (
                         <VisibilityOffIcon />
                       ) : (
-                        <VisibilityIcon />
+                        <VisibilityIcon
+                          style={{
+                            color: isAdmin ? "#c084fc" : "#737373",
+                          }}
+                        />
                       )}
                     </IconButton>
                     <IconButton
                       size="small"
                       disabled={!isAdmin}
                       onClick={() => dispatch(deleteProduct(product.id!))}
-                      className="text-[#991b1b] disabled:text-[#737373] cursor-pointer disabled:cursor-not-allowed"
+                      className="cursor-pointer disabled:cursor-not-allowed"
                     >
-                      <DeleteIcon />
+                      <DeleteIcon
+                        style={{
+                          color: isAdmin ? "#991b1b" : "#737373",
+                        }}
+                      />
                     </IconButton>
                   </TableCell>
                 </TableRow>

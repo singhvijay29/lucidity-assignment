@@ -31,7 +31,7 @@ const EditProductModal: React.FC<EditProductModalProps> = ({
           </button>
         </div>
 
-        <p className="text-gray-400 text-sm mb-4">Samsumg s24 ultra</p>
+        <p className="text-gray-400 text-sm mb-4">{formData.name}</p>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
