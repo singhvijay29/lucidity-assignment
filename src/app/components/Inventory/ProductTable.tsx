@@ -224,13 +224,16 @@ const ProductTable = () => {
                           </IconButton>
                           <IconButton
                             size="small"
-                            disabled={!isAdmin}
+                            disabled={!isAdmin || product.disabled}
                             onClick={() => dispatch(deleteProduct(product.id!))}
                             className="cursor-pointer disabled:cursor-not-allowed"
                           >
                             <DeleteIcon
                               style={{
-                                color: isAdmin ? "#991b1b" : "#737373",
+                                color:
+                                  !isAdmin || product.disabled
+                                    ? "#737373"
+                                    : "#991b1b",
                               }}
                             />
                           </IconButton>
